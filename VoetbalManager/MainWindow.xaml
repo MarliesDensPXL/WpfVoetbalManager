@@ -82,12 +82,14 @@
                             <ComboBox x:Name="stadiumComboBox" Width="100"/>
                         </WrapPanel>
                         <WrapPanel>
-                        <Button x:Name="newMatchButton" MinWidth="180" Content="Toevoegen" Margin="5,10,5,5"/>
+                        <Button x:Name="newMatchButton" MinWidth="180" Content="Toevoegen" Margin="5,10,5,5" IsEnabled="False"/>
                         </WrapPanel>
                     </StackPanel>
                     <Button x:Name="toggleButton" DockPanel.Dock="Left" Width="30" >
                         <Image Source="/Images/arrow-right.png"/>
                     </Button>
+                    <Calendar x:Name="dateselectorCalendar" DockPanel.Dock="Top"/>
+                    <ListBox x:Name="matchListBox" DockPanel.Dock="Bottom" Margin="10"/>
                 </DockPanel>
             </TabItem>
         </TabControl>
