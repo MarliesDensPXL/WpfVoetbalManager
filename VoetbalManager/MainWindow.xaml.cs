@@ -20,15 +20,24 @@ namespace VoetbalManager
         public MainWindow()
         {
             InitializeComponent();
-            Team team = new Team("Kayserispor");
-            team.AddPlayer(new Footballer("Murat", "Akin", 2, "midfielder",  3), false);
-            team.AddPlayer(new Footballer("Igor", "Akinfejev",4 ,"goalkeeper",  0), false);
-            team.AddPlayer(new Footballer("Kerem", "Aktürkoglu", 5, "attacker",  10), true);
-            team.AddPlayer(new Footballer("Chuba", "Akpom", 3, "defender",  1), false);
 
-            teamsComboBox.Items.Add(team);
+            List<Team> _teams;
+            List<Stadium> _stadiums;
+            Dictionary<DateTime, List<Match>> _matchCalendar;
+
+            _teams = Data.LoadMockDataTeam();
+            _stadiums = Data.LoadMockDataStadium();
+            _matchCalendar = Data.LoadMockDataPlanner(_teams, _stadiums);
+
+            foreach (Team team in _teams)
+            {
+                teamsComboBox.Items.Add(team);
+            }
+
             teamsComboBox.SelectedIndex = 0;
         }
+
+        
 
         private void OnAddTeamButtonClicked(object sender, RoutedEventArgs e)
         {
