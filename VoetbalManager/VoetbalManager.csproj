@@ -8,4 +8,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\voetbalmanager-stadion.jpg" />
+    <None Remove="voetbalmanager-stadion.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\voetbalmanager-stadion.jpg" />
+    <Resource Include="voetbalmanager-stadion.jpg" />
+  </ItemGroup>
+
 </Project>
