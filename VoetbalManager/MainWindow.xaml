@@ -4,56 +4,71 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VoetbalManager"
-        mc:Ignorable="d"
+        mc:Ignorable="d"       
+       
         Title="MainWindow" Height="450" Width="800" >
 
-    <Window.Background>
-        <ImageBrush ImageSource="/voetbalmanager-stadion.jpg"/>
-    </Window.Background>
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.6">
-                <GradientStop Color="Black" Offset="0.5" />
-                <GradientStop Color="Transparent" Offset="0.8" />
-            </LinearGradientBrush>
-        </Grid.Background>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <TabControl>
+            <TabItem Header="Manager">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="72*"/>
+                        <ColumnDefinition Width="127*"/>
+                        <ColumnDefinition Width="199*"/>
+                        <ColumnDefinition Width="199*"/>
+                        <ColumnDefinition Width="199*"/>
+                    </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Orientation="Vertical">
-            <TextBox x:Name="teamNameTextBox" Margin="20"/>
-            <Button x:Name="addTeamButton" Content="Voeg team toe" Margin="20" Click="OnAddTeamButtonClicked" />
-            <ComboBox x:Name="teamsComboBox" Margin="20,10,20,10" SelectionChanged="OnTeamSelectionChanged" />
-            <TextBlock x:Name="teaminfoTextBlock" Margin="20,10,20,10" Foreground="White"/>
+                    <Image Grid.ColumnSpan="5" Source="/voetbalmanager-stadion.jpg" Stretch="UniformToFill"/>
+                    <Rectangle Grid.Column="4">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.6">
+                                <GradientStop Color="Black" Offset="0.5" />
+                                <GradientStop Color="Transparent" Offset="0.8" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
 
-        </StackPanel>
-        <StackPanel Grid.Column="1" Orientation="Vertical" >
-            <TextBlock Text="Voornaam" Margin="20,20,20,10" Foreground="White"/>
-            <TextBlock Text="Achternaam" Margin="20,10,20,10" Foreground="White"/>
-            <TextBlock Text="Positie" Margin="20,10,20,10" Foreground="White"/>
-            <TextBlock Text="Rugnummer" Margin="20,10,20,10" Foreground="White"/>
-            <TextBlock Text="Aantal Doelpunten" Margin="20,10,20,10" Foreground="White"/>
-            <TextBlock Text="Is Kapitein" Margin="20,10,20,10" Foreground="White"/>
-        </StackPanel>
-        <StackPanel Grid.Column="2">
-            <TextBox x:Name="firstNameTextbox" Margin="20,20,20,10" />
-            <TextBox x:Name="lastNameTextbox" Margin="20,10,20,10" />
-            <TextBox x:Name="positionTextbox" Margin="20,10,20,10" />
-            <TextBox x:Name="jerseyNumberTextbox" Margin="20,10,20,10" />
-            <TextBox x:Name="numberOfGoalsTextbox" Margin="20,10,20,10" />
-            <CheckBox x:Name="isCaptainCheckBox" Content="is kapitein" Foreground="White"  Margin="20,10,20,10" />
-            <Button x:Name="addPlayerButton" Content="Voeg speler toe" Margin="20,10,20,10" Click="OnAddPlayerButtonClicked" />
-        </StackPanel>
-        <DockPanel Grid.Column="3">
-            <Button DockPanel.Dock="Bottom" x:Name="removePlayerButton" Content="Verwijder speler" Margin="20,10,20,10" Click="OnRemovePlayerButtonClicked" />
-            <TextBox DockPanel.Dock="Bottom" x:Name="playerinfoTextBox" Margin="10,10,10,10" Height="120" Opacity="0.7"/>
-            <ListBox DockPanel.Dock="Top" x:Name="footballersListBox" Margin="10,10,10,10" Height="220" Background="Transparent" Foreground="White" SelectionChanged="OnFootballersListBoxSelectionChanged" />
-        </DockPanel>
+                    <StackPanel Grid.Column="0" Orientation="Vertical" Grid.ColumnSpan="2">
+                        <TextBox x:Name="teamNameTextBox" Margin="20"/>
+                        <Button x:Name="addTeamButton" Content="Voeg team toe" Margin="20" Click="OnAddTeamButtonClicked" />
+                        <ComboBox x:Name="teamsComboBox" Margin="20,10,20,10" SelectionChanged="OnTeamSelectionChanged" />
+                        <TextBlock x:Name="teaminfoTextBlock" Margin="20,10,20,10" Foreground="White"/>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Vertical" Grid.ColumnSpan="2" Margin="126,0,0,0" >
+                        <TextBlock Text="Voornaam" Margin="20,20,20,10" Foreground="White"/>
+                        <TextBlock Text="Achternaam" Margin="20,10,20,10" Foreground="White"/>
+                        <TextBlock Text="Positie" Margin="20,10,20,10" Foreground="White"/>
+                        <TextBlock Text="Rugnummer" Margin="20,10,20,10" Foreground="White"/>
+                        <TextBlock Text="Aantal Doelpunten" Margin="20,10,20,10" Foreground="White"/>
+                        <TextBlock Text="Is Kapitein" Margin="20,10,20,10" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Grid.ColumnSpan="2" Margin="0,0,198,0">
+                        <TextBox x:Name="firstNameTextbox" Margin="20,20,20,10" />
+                        <TextBox x:Name="lastNameTextbox" Margin="20,10,20,10" />
+                        <TextBox x:Name="positionTextbox" Margin="20,10,20,10" />
+                        <TextBox x:Name="jerseyNumberTextbox" Margin="20,10,20,10" />
+                        <TextBox x:Name="numberOfGoalsTextbox" Margin="20,10,20,10" />
+                        <CheckBox x:Name="isCaptainCheckBox" Content="is kapitein" Foreground="White"  Margin="20,10,20,10" />
+                        <Button x:Name="addPlayerButton" Content="Voeg speler toe" Margin="20,10,20,10" Click="OnAddPlayerButtonClicked" />
+                    </StackPanel>
+                    <DockPanel Grid.Column="4">
+                        <Button DockPanel.Dock="Bottom" x:Name="removePlayerButton" Content="Verwijder speler" Margin="20,10,20,10" Click="OnRemovePlayerButtonClicked" />
+                        <TextBox DockPanel.Dock="Bottom" x:Name="playerinfoTextBox" Margin="10,10,10,10" Height="120" Opacity="0.7"/>
+                        <ListBox DockPanel.Dock="Top" x:Name="footballersListBox" Margin="10,10,10,10" Height="220" Background="Transparent" Foreground="White" SelectionChanged="OnFootballersListBoxSelectionChanged" />
+                    </DockPanel>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Planner">
+
+            </TabItem>
+        </TabControl>
+
 
     </Grid>
 </Window>
