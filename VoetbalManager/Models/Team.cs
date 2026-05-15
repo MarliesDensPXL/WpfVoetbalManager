@@ -84,11 +84,12 @@ namespace VoetbalManager.Models
             sb.AppendLine("----------------------");
             foreach (Footballer fb in _footballers)
             {
+                string captainStar = (fb == Captain) ? "*" : "";
                 // TODO nog iets fixen voor * achter captains name
-                sb.AppendLine($"{fb.LastName} {fb.FirstName}");
+                sb.AppendLine($"{fb.LastName} {fb.FirstName}{captainStar}");
             }
             sb.AppendLine("----------------------");                       
-            sb.AppendLine($"Gemiddeld aantal doelpunten: {AverageNumberOfGoals()}");
+            sb.AppendLine($"Gemiddeld aantal \n doelpunten: {AverageNumberOfGoals():f2}");
 
             return sb.ToString();                  
                

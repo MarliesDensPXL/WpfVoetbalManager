@@ -94,7 +94,7 @@ namespace VoetbalManager.Models
 		public string GetInformation()
 		{
 			return $"Voetballer {LastName} {FirstName} ({JerseyNumber}) \n" +
-				$"heeft dit seizoen {NumberOfGoals} doelen gescoord.\n" +
+				$"heeft dit seizoen {NumberOfGoals} doelen \n gescoord.\n" +
 				$"Positie: {Position}";
 		}
 

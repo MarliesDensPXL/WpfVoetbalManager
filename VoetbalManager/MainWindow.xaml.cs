@@ -34,6 +34,7 @@ namespace VoetbalManager
         {
             if (string.IsNullOrWhiteSpace(teamNameTextBox.Text))
                 {
+                MessageBox.Show("Geef de naam van je team in.");
                 return;
             }
             
@@ -65,6 +66,7 @@ namespace VoetbalManager
 
             Footballer selectedFootballer = (Footballer)footballersListBox.SelectedItem;
 
+            teaminfoTextBlock.Text = selectedTeam.TeamInformation();
            
 
             LoadPlayerInfo(selectedFootballer);  
@@ -142,6 +144,8 @@ namespace VoetbalManager
                 selectedTeam.AddPlayer(newFootballer, isCaptain);
 
                 footballersListBox.Items.Add(newFootballer);
+
+                teaminfoTextBlock.Text = selectedTeam.TeamInformation();
             }
             catch (ArgumentException ae)
             {
@@ -151,7 +155,6 @@ namespace VoetbalManager
 
         private void OnRemovePlayerButtonClicked(object sender, RoutedEventArgs e)
         {
-
             Footballer playerToRemove = (Footballer)footballersListBox.SelectedItem;                      
 
             Team selectedTeam = (Team)teamsComboBox.SelectedItem;
@@ -160,6 +163,7 @@ namespace VoetbalManager
 
             footballersListBox.Items.Remove(playerToRemove);
 
+            teaminfoTextBlock.Text = selectedTeam.TeamInformation();
         }
     }
 }
