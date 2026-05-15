@@ -47,10 +47,10 @@
             <TextBox x:Name="jerseyNumberTextbox" Margin="20,10,20,10" />
             <TextBox x:Name="numberOfGoalsTextbox" Margin="20,10,20,10" />
             <CheckBox x:Name="isCaptainCheckBox" Content="is kapitein" Foreground="White"  Margin="20,10,20,10" />
-            <Button x:Name="addPlayerButton" Content="Voeg speler toe" Margin="20,10,20,10" />
+            <Button x:Name="addPlayerButton" Content="Voeg speler toe" Margin="20,10,20,10" Click="OnAddPlayerButtonClicked" />
         </StackPanel>
         <DockPanel Grid.Column="3">
-            <Button DockPanel.Dock="Bottom" x:Name="removePlayerButton" Content="Verwijder speler" Margin="20,10,20,10" />
+            <Button DockPanel.Dock="Bottom" x:Name="removePlayerButton" Content="Verwijder speler" Margin="20,10,20,10" Click="OnRemovePlayerButtonClicked" />
             <TextBox DockPanel.Dock="Bottom" x:Name="playerinfoTextBox" Margin="10,10,10,10" Height="120" Opacity="0.7"/>
             <ListBox DockPanel.Dock="Top" x:Name="footballersListBox" Margin="10,10,10,10" Height="220" Background="Transparent" Foreground="White" SelectionChanged="OnFootballersListBoxSelectionChanged" />
         </DockPanel>

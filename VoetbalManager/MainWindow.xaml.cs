@@ -54,6 +54,8 @@ namespace VoetbalManager
             {
                 return;
             }
+            
+
             foreach (Footballer fb in selectedTeam.Footballers)
             {
                 footballersListBox.Items.Add(fb);
@@ -65,22 +67,17 @@ namespace VoetbalManager
 
            
 
-            LoadPlayerInfo(selectedFootballer, selectedTeam);  
+            LoadPlayerInfo(selectedFootballer);  
         }
 
-        private void LoadPlayerInfo(Footballer selectedFootballer, Team selectedTeam)
+        private void LoadPlayerInfo(Footballer selectedFootballer)
         {
             if (selectedFootballer == null)
             {
                 return;
             }
 
-            firstNameTextbox.Text = selectedFootballer.FirstName;
-            lastNameTextbox.Text = selectedFootballer.LastName;
-            positionTextbox.Text = selectedFootballer.Position;
-            jerseyNumberTextbox.Text = selectedFootballer.JerseyNumber.ToString();
-            numberOfGoalsTextbox.Text = selectedFootballer.NumberOfGoals.ToString();
-            isCaptainCheckBox.IsChecked = (selectedTeam.Captain == selectedFootballer);
+            playerinfoTextBox.Text = selectedFootballer.GetInformation();            
         }
 
         private void OnFootballersListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -89,7 +86,38 @@ namespace VoetbalManager
 
             Footballer selectedFootballer = (Footballer)footballersListBox.SelectedItem;
 
-            LoadPlayerInfo(selectedFootballer, selectedTeam);
+            LoadPlayerInfo(selectedFootballer);
+        }
+
+        private void OnAddPlayerButtonClicked(object sender, RoutedEventArgs e)
+        {
+            Team selectedTeam = (Team)teamsComboBox.SelectedItem;
+
+            string firstname = firstNameTextbox.Text;
+            string lastname = lastNameTextbox.Text;
+            string position = positionTextbox.Text;
+            int.TryParse(jerseyNumberTextbox.Text, out int jerseyNumber);
+            int.TryParse(numberOfGoalsTextbox.Text, out int numberOfGoals);
+            bool isCaptain = isCaptainCheckBox.IsChecked == true;
+
+            Footballer newFootballer = new Footballer(firstname, lastname, position, jerseyNumber, numberOfGoals);
+
+            selectedTeam.AddPlayer(newFootballer, isCaptain);
+
+            footballersListBox.Items.Add(newFootballer);
+        }
+
+        private void OnRemovePlayerButtonClicked(object sender, RoutedEventArgs e)
+        {
+
+            Footballer playerToRemove = (Footballer)footballersListBox.SelectedItem;                      
+
+            Team selectedTeam = (Team)teamsComboBox.SelectedItem;
+
+            selectedTeam.RemoveFootballer(playerToRemove);
+
+            footballersListBox.Items.Remove(playerToRemove);
+
         }
     }
 }
