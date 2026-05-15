@@ -24,6 +24,7 @@ namespace VoetbalManager.Models
 			set { _lastName = value; }
 		}
 
+		private static string[] _allowedPositions = { "attacker", "defender", "goalkeeper", "midfielder", "middenvelder", "doelman", "verdediger", "aanvaller" };
 		private string _position;
 
 		public string Position
@@ -31,7 +32,8 @@ namespace VoetbalManager.Models
 			get { return _position; }
 			set
 			{
-				if (value.Equals("goalkeeper",StringComparison.OrdinalIgnoreCase) || value.Equals("attacker", StringComparison.OrdinalIgnoreCase) || value.Equals("midfielder", StringComparison.OrdinalIgnoreCase) || value.Equals("defender", StringComparison.OrdinalIgnoreCase))
+				// if (value.Equals("goalkeeper",StringComparison.OrdinalIgnoreCase) || value.Equals("attacker", StringComparison.OrdinalIgnoreCase) || value.Equals("midfielder", StringComparison.OrdinalIgnoreCase) || value.Equals("defender", StringComparison.OrdinalIgnoreCase))
+				if (Array.Exists(_allowedPositions, position => position.Equals(value, StringComparison.OrdinalIgnoreCase)))
 				{
 					_position = value;
 				}
@@ -68,7 +70,7 @@ namespace VoetbalManager.Models
 			set { _numberOfGoals = value; }
 		}
 
-        public Footballer(string firstName, string lastName, string position, int jerseyNumber, int numberOfGoals)
+        public Footballer(string firstName, string lastName, int jerseyNumber, string position, int numberOfGoals)
         {
             FirstName = firstName;
             LastName = lastName;

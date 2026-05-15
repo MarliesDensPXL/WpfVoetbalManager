@@ -21,10 +21,10 @@ namespace VoetbalManager
         {
             InitializeComponent();
             Team team = new Team("Kayserispor");
-            team.AddPlayer(new Footballer("Murat", "Akin", "midfielder", 2, 3), false);
-            team.AddPlayer(new Footballer("Igor", "Akinfejev", "goalkeeper", 4, 0), false);
-            team.AddPlayer(new Footballer("Kerem", "Aktürkoglu", "attacker", 5, 10), true);
-            team.AddPlayer(new Footballer("Chuba", "Akpom", "defender", 3,  1), false);
+            team.AddPlayer(new Footballer("Murat", "Akin", 2, "midfielder",  3), false);
+            team.AddPlayer(new Footballer("Igor", "Akinfejev",4 ,"goalkeeper",  0), false);
+            team.AddPlayer(new Footballer("Kerem", "Aktürkoglu", 5, "attacker",  10), true);
+            team.AddPlayer(new Footballer("Chuba", "Akpom", 3, "defender",  1), false);
 
             teamsComboBox.Items.Add(team);
             teamsComboBox.SelectedIndex = 0;
@@ -139,7 +139,7 @@ namespace VoetbalManager
             try
             {
 
-                Footballer newFootballer = new Footballer(firstName, lastName, position, jerseyNumber, numberOfGoals);
+                Footballer newFootballer = new Footballer(firstName, lastName, jerseyNumber, position, numberOfGoals);
 
                 selectedTeam.AddPlayer(newFootballer, isCaptain);
 
