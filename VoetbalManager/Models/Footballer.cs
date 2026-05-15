@@ -31,9 +31,13 @@ namespace VoetbalManager.Models
 			get { return _position; }
 			set
 			{
-				if (value == "goalkeeper" || value == "attacker" || value == "midfielder" || value == "defender")
+				if (value.Equals("goalkeeper",StringComparison.OrdinalIgnoreCase) || value.Equals("attacker", StringComparison.OrdinalIgnoreCase) || value.Equals("midfielder", StringComparison.OrdinalIgnoreCase) || value.Equals("defender", StringComparison.OrdinalIgnoreCase))
 				{
 					_position = value;
+				}
+				else
+				{
+					throw new ArgumentException("Ongeldige waarde. Geef een correcte positie in.");
 				}
 			}
 		}
@@ -48,6 +52,10 @@ namespace VoetbalManager.Models
 				if (value >= 0 && value <= 100)
 				{
 					_jerseyNumber = value;
+				}
+				else
+				{
+					throw new ArgumentException("Ongeldige waarde. Geef een geheel getal in tussen 0 en 100.");
 				}
 			}
 		}

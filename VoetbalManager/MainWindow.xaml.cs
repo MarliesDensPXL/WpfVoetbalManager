@@ -92,19 +92,61 @@ namespace VoetbalManager
         private void OnAddPlayerButtonClicked(object sender, RoutedEventArgs e)
         {
             Team selectedTeam = (Team)teamsComboBox.SelectedItem;
+            string firstName = "";
+            string lastName = "";
+            string position = "";
+            int jerseyNumber = 0;
+            int numberOfGoals = 0;
 
-            string firstname = firstNameTextbox.Text;
-            string lastname = lastNameTextbox.Text;
-            string position = positionTextbox.Text;
-            int.TryParse(jerseyNumberTextbox.Text, out int jerseyNumber);
-            int.TryParse(numberOfGoalsTextbox.Text, out int numberOfGoals);
+            if (!string.IsNullOrWhiteSpace(firstNameTextbox.Text))
+            {
+                firstName = firstNameTextbox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Vul een voornaam in!");
+            }
+            if (!string.IsNullOrWhiteSpace(lastNameTextbox.Text))
+            {
+                lastName = lastNameTextbox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Vul een achternaam in!");
+            }
+            if (!string.IsNullOrWhiteSpace(positionTextbox.Text))
+            {
+                position = positionTextbox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Vul een positie in!");
+            }
+            if (!int.TryParse(jerseyNumberTextbox.Text, out jerseyNumber))
+            {
+                MessageBox.Show("Vul een geheel getal in.");
+            }
+            if (!int.TryParse(numberOfGoalsTextbox.Text, out numberOfGoals))
+            {
+                MessageBox.Show("Vul een geheel getal in.");
+            }            
+            
+           
             bool isCaptain = isCaptainCheckBox.IsChecked == true;
 
-            Footballer newFootballer = new Footballer(firstname, lastname, position, jerseyNumber, numberOfGoals);
+            try
+            {
 
-            selectedTeam.AddPlayer(newFootballer, isCaptain);
+                Footballer newFootballer = new Footballer(firstName, lastName, position, jerseyNumber, numberOfGoals);
 
-            footballersListBox.Items.Add(newFootballer);
+                selectedTeam.AddPlayer(newFootballer, isCaptain);
+
+                footballersListBox.Items.Add(newFootballer);
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show(ae.Message);
+            }
         }
 
         private void OnRemovePlayerButtonClicked(object sender, RoutedEventArgs e)
