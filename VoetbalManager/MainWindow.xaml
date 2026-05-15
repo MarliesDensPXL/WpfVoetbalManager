@@ -52,7 +52,7 @@
         <DockPanel Grid.Column="3">
             <Button DockPanel.Dock="Bottom" x:Name="removePlayerButton" Content="Verwijder speler" Margin="20,10,20,10" />
             <TextBox DockPanel.Dock="Bottom" x:Name="playerinfoTextBox" Margin="10,10,10,10" Height="120" Opacity="0.7"/>
-            <ListBox DockPanel.Dock="Top" x:Name="footballersListBox" Margin="10,10,10,10" Height="220" Background="Transparent" Foreground="White" />
+            <ListBox DockPanel.Dock="Top" x:Name="footballersListBox" Margin="10,10,10,10" Height="220" Background="Transparent" Foreground="White" SelectionChanged="OnFootballersListBoxSelectionChanged" />
         </DockPanel>
 
     </Grid>

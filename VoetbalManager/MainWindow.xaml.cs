@@ -60,6 +60,36 @@ namespace VoetbalManager
             }
 
             footballersListBox.SelectedIndex = 0;
+
+            Footballer selectedFootballer = (Footballer)footballersListBox.SelectedItem;
+
+           
+
+            LoadPlayerInfo(selectedFootballer, selectedTeam);  
+        }
+
+        private void LoadPlayerInfo(Footballer selectedFootballer, Team selectedTeam)
+        {
+            if (selectedFootballer == null)
+            {
+                return;
+            }
+
+            firstNameTextbox.Text = selectedFootballer.FirstName;
+            lastNameTextbox.Text = selectedFootballer.LastName;
+            positionTextbox.Text = selectedFootballer.Position;
+            jerseyNumberTextbox.Text = selectedFootballer.JerseyNumber.ToString();
+            numberOfGoalsTextbox.Text = selectedFootballer.NumberOfGoals.ToString();
+            isCaptainCheckBox.IsChecked = (selectedTeam.Captain == selectedFootballer);
+        }
+
+        private void OnFootballersListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Team selectedTeam = (Team)teamsComboBox.SelectedItem;
+
+            Footballer selectedFootballer = (Footballer)footballersListBox.SelectedItem;
+
+            LoadPlayerInfo(selectedFootballer, selectedTeam);
         }
     }
 }

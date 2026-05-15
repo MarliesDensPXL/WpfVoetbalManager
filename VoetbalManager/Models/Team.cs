@@ -84,6 +84,7 @@ namespace VoetbalManager.Models
             sb.AppendLine("----------------------");
             foreach (Footballer fb in _footballers)
             {
+                // TODO nog iets fixen voor * achter captains name
                 sb.AppendLine($"{fb.LastName} {fb.FirstName}");
             }
             sb.AppendLine("----------------------");                       
