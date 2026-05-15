@@ -83,7 +83,7 @@ namespace VoetbalManager.Models
 			return $"{LastName} - {FirstName}";
         }
 
-		public string Informatie()
+		public string GetInformation()
 		{
 			return $"Voetballer {LastName} {FirstName} ({JerseyNumber}) \n" +
 				$"heeft dit seizoen {NumberOfGoals} doelen gescoord.\n" +

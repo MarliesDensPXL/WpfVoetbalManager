@@ -43,7 +43,7 @@ namespace VoetbalManager.Models
             TeamName = teamName;
         }
 
-        public void AddFootballer(Footballer footballer, bool isCaptain)
+        public void AddPlayer(Footballer footballer, bool isCaptain)
         {
             _footballers.Add(footballer);
 

@@ -27,8 +27,8 @@
 
         <StackPanel Grid.Column="0" Orientation="Vertical">
             <TextBox x:Name="teamNameTextBox" Margin="20"/>
-            <Button x:Name="addTeamButton" Content="Voeg team toe" Margin="20" />
-            <ComboBox x:Name="teamsComboBox" Margin="20" />
+            <Button x:Name="addTeamButton" Content="Voeg team toe" Margin="20" Click="OnAddTeamButtonClicked" />
+            <ComboBox x:Name="teamsComboBox" Margin="20" SelectionChanged="OnTeamSelectionChanged" />
             <TextBlock x:Name="teaminfoTextBlock" Margin="20"/>
 
         </StackPanel>
@@ -52,7 +52,7 @@
         <DockPanel Grid.Column="3">
             <Button DockPanel.Dock="Bottom" x:Name="removePlayerButton" Content="Verwijder speler" Margin="20,10,20,10" />
             <TextBox DockPanel.Dock="Bottom" x:Name="playerinfoTextBox" Margin="10,10,10,10" Height="120" Opacity="0.7"/>
-            <ListBox DockPanel.Dock="Top" x:Name="footballersListBox" Margin="10,10,10,10" Height="220" Background="Transparent" />
+            <ListBox DockPanel.Dock="Top" x:Name="footballersListBox" Margin="10,10,10,10" Height="220" Background="Transparent" Foreground="White" />
         </DockPanel>
 
     </Grid>
