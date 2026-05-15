@@ -60,12 +60,35 @@
                         <TextBox DockPanel.Dock="Bottom" x:Name="playerinfoTextBox" Margin="10,10,10,10" Height="120" Opacity="0.7"/>
                         <ListBox DockPanel.Dock="Top" x:Name="footballersListBox" Margin="10,10,10,10" Height="220" Background="Transparent" Foreground="White" SelectionChanged="OnFootballersListBoxSelectionChanged" />
                     </DockPanel>
-
-
                 </Grid>
             </TabItem>
             <TabItem Header="Planner">
-
+                <DockPanel Background="Bisque">
+                    <StackPanel DockPanel.Dock="Left" Margin="5">
+                        <WrapPanel Margin="5" Orientation="Horizontal">
+                            <Label Content="Datum:" MinWidth="80"/>
+                            <DatePicker x:Name="matchDatePicer" Width="100"/>
+                        </WrapPanel>
+                        <WrapPanel Margin="5" Orientation="Horizontal">
+                            <Label Content="Home:" MinWidth="80"/>
+                            <ComboBox x:Name="homeComboBox" Width="100"/>
+                        </WrapPanel>
+                        <WrapPanel Margin="5" Orientation="Horizontal">
+                            <Label Content="Visitor:" MinWidth="80"/>
+                            <ComboBox x:Name="visitorComboBox" Width="100"/>
+                        </WrapPanel>
+                        <WrapPanel Margin="5" Orientation="Horizontal">
+                            <Label Content="Location:" MinWidth="80"/>
+                            <ComboBox x:Name="stadiumComboBox" Width="100"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                        <Button x:Name="newMatchButton" MinWidth="180" Content="Toevoegen" Margin="5,10,5,5"/>
+                        </WrapPanel>
+                    </StackPanel>
+                    <Button x:Name="toggleButton" DockPanel.Dock="Left" Width="30" >
+                        <Image Source="/Images/arrow-right.png"/>
+                    </Button>
+                </DockPanel>
             </TabItem>
         </TabControl>
 
