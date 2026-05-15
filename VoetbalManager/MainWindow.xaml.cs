@@ -46,6 +46,8 @@ namespace VoetbalManager
 
         private void OnTeamSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            footballersListBox.Items.Clear();
+            
             Team selectedTeam = (Team)teamsComboBox.SelectedItem;
 
             if (selectedTeam == null)
@@ -57,7 +59,7 @@ namespace VoetbalManager
                 footballersListBox.Items.Add(fb);
             }
 
-            footballersListBox.SelectedItem = 0;
+            footballersListBox.SelectedIndex = 0;
         }
     }
 }

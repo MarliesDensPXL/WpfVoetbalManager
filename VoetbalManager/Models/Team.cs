@@ -41,6 +41,7 @@ namespace VoetbalManager.Models
         public Team(string teamName)
         {
             TeamName = teamName;
+            _footballers = new List<Footballer>();
         }
 
         public void AddPlayer(Footballer footballer, bool isCaptain)
