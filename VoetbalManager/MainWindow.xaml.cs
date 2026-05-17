@@ -17,13 +17,16 @@ namespace VoetbalManager
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        List<Team> _teams;
+        List<Stadium> _stadiums;
+        Dictionary<DateTime, List<Match>> _matchCalendar;
+
+        
+
         public MainWindow()
         {
             InitializeComponent();
-
-            List<Team> _teams;
-            List<Stadium> _stadiums;
-            Dictionary<DateTime, List<Match>> _matchCalendar;
 
             _teams = Data.LoadMockDataTeam();
             _stadiums = Data.LoadMockDataStadium();
@@ -32,12 +35,22 @@ namespace VoetbalManager
             foreach (Team team in _teams)
             {
                 teamsComboBox.Items.Add(team);
+                homeComboBox.Items.Add(team);
+                visitorComboBox.Items.Add(team);
             }
 
-            teamsComboBox.SelectedIndex = 0;
-        }
+            foreach (Stadium stadium in _stadiums)
+            {
+                stadiumComboBox.Items.Add(stadium);
+            }
 
-        
+            dateselectorCalendar.SelectedDate = DateTime.Today;
+
+            teamsComboBox.SelectedIndex = 0;
+
+            newMatchStackPanel.Visibility = Visibility.Collapsed;
+            ShowMatches();
+        }        
 
         private void OnAddTeamButtonClicked(object sender, RoutedEventArgs e)
         {
@@ -78,7 +91,9 @@ namespace VoetbalManager
             teaminfoTextBlock.Text = selectedTeam.TeamInformation();
            
 
-            LoadPlayerInfo(selectedFootballer);  
+            LoadPlayerInfo(selectedFootballer);
+
+            newMatchButton.IsEnabled = CanEnableButton();
         }
 
         private void LoadPlayerInfo(Footballer selectedFootballer)
@@ -173,6 +188,67 @@ namespace VoetbalManager
             footballersListBox.Items.Remove(playerToRemove);
 
             teaminfoTextBlock.Text = selectedTeam.TeamInformation();
+        }
+
+        public bool CanEnableButton()
+        {
+            return (matchDatePicker.SelectedDate is not null
+                && teamsComboBox.SelectedItem is not null
+                && homeComboBox.SelectedItem is not null
+                && visitorComboBox.SelectedItem is not null);
+        }
+
+        private void OnMatchDatePickerDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            newMatchButton.IsEnabled = CanEnableButton();
+        }
+
+        private void OnHomeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            newMatchButton.IsEnabled = CanEnableButton();
+        }
+
+        private void OnVisitorSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            newMatchButton.IsEnabled = CanEnableButton();
+        }
+        
+        public void ShowMatches()
+        {
+            matchListBox.Items.Clear();
+
+            DateTime? selectedDate = dateselectorCalendar.SelectedDate;
+
+            if (selectedDate == null)
+            {
+                return;
+            }
+
+            // omzetten naar non-nullable date
+            DateTime date = selectedDate.Value;
+
+            if (!_matchCalendar.ContainsKey(date))
+            {
+                return;
+            }
+            else
+            {
+                foreach (var kv in _matchCalendar[date])
+                {
+                    matchListBox.Items.Add(kv);
+                }
+            }
+        }
+
+        private void OnDateSelectorDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ShowMatches();
+        }
+
+        private void OnNewMatchButtonClicked(object sender, RoutedEventArgs e)
+        {
+            // TODO de rest nog aanvullen (laatste vereiste)
+            ShowMatches();
         }
     }
 }

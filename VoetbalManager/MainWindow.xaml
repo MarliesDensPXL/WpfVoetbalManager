@@ -64,31 +64,31 @@
             </TabItem>
             <TabItem Header="Planner">
                 <DockPanel Background="Bisque">
-                    <StackPanel DockPanel.Dock="Left" Margin="5">
+                    <StackPanel x:Name="newMatchStackPanel"  DockPanel.Dock="Left" Margin="5">
                         <WrapPanel Margin="5" Orientation="Horizontal">
                             <Label Content="Datum:" MinWidth="80"/>
-                            <DatePicker x:Name="matchDatePicer" Width="100"/>
+                            <DatePicker x:Name="matchDatePicker" Width="100" SelectedDateChanged="OnMatchDatePickerDateChanged"/>
                         </WrapPanel>
                         <WrapPanel Margin="5" Orientation="Horizontal">
                             <Label Content="Home:" MinWidth="80"/>
-                            <ComboBox x:Name="homeComboBox" Width="100"/>
+                            <ComboBox x:Name="homeComboBox" Width="100" SelectionChanged="OnHomeSelectionChanged"/>
                         </WrapPanel>
                         <WrapPanel Margin="5" Orientation="Horizontal">
                             <Label Content="Visitor:" MinWidth="80"/>
-                            <ComboBox x:Name="visitorComboBox" Width="100"/>
+                            <ComboBox x:Name="visitorComboBox" Width="100" SelectionChanged="OnVisitorSelectionChanged"/>
                         </WrapPanel>
                         <WrapPanel Margin="5" Orientation="Horizontal">
                             <Label Content="Location:" MinWidth="80"/>
                             <ComboBox x:Name="stadiumComboBox" Width="100"/>
                         </WrapPanel>
                         <WrapPanel>
-                        <Button x:Name="newMatchButton" MinWidth="180" Content="Toevoegen" Margin="5,10,5,5" IsEnabled="False"/>
+                        <Button x:Name="newMatchButton" MinWidth="180" Content="Toevoegen" Margin="5,10,5,5" IsEnabled="False" Click="OnNewMatchButtonClicked"/>
                         </WrapPanel>
                     </StackPanel>
                     <Button x:Name="toggleButton" DockPanel.Dock="Left" Width="30" >
                         <Image Source="/Images/arrow-right.png"/>
                     </Button>
-                    <Calendar x:Name="dateselectorCalendar" DockPanel.Dock="Top"/>
+                    <Calendar x:Name="dateselectorCalendar" DockPanel.Dock="Top" SelectedDatesChanged="OnDateSelectorDateChanged"/>
                     <ListBox x:Name="matchListBox" DockPanel.Dock="Bottom" Margin="10"/>
                 </DockPanel>
             </TabItem>
