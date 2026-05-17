@@ -9,11 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\arrow-left.png" />
+    <None Remove="Images\arrow-right.png" />
     <None Remove="Images\voetbalmanager-stadion.jpg" />
     <None Remove="voetbalmanager-stadion.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\arrow-left.png" />
+    <Resource Include="Images\arrow-right.png" />
     <Resource Include="Images\voetbalmanager-stadion.jpg" />
     <Resource Include="voetbalmanager-stadion.jpg" />
   </ItemGroup>

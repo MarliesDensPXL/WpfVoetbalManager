@@ -85,8 +85,8 @@
                         <Button x:Name="newMatchButton" MinWidth="180" Content="Toevoegen" Margin="5,10,5,5" IsEnabled="False" Click="OnNewMatchButtonClicked"/>
                         </WrapPanel>
                     </StackPanel>
-                    <Button x:Name="toggleButton" DockPanel.Dock="Left" Width="30" >
-                        <Image Source="/Images/arrow-right.png"/>
+                    <Button x:Name="toggleButton" DockPanel.Dock="Left" Width="30" Click="OnToggleButtonClicked" >
+                        <Image x:Name="toggleButtonImage" Source="/Images/arrow-right.png"/>
                     </Button>
                     <Calendar x:Name="dateselectorCalendar" DockPanel.Dock="Top" SelectedDatesChanged="OnDateSelectorDateChanged" />
                     <ListBox x:Name="matchListBox" DockPanel.Dock="Bottom" Margin="10" MouseDoubleClick="OnMatchListBoxMouseDoubleClick"/>

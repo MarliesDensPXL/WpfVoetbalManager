@@ -224,6 +224,7 @@ namespace VoetbalManager
                 return;
             }
 
+            // @Wim: dit was een tip van Copilot. Klopt dit en/of had ik dit zelf moeten weten?
             // omzetten naar non-nullable date
             DateTime date = selectedDate.Value;
 
@@ -247,8 +248,34 @@ namespace VoetbalManager
 
         private void OnNewMatchButtonClicked(object sender, RoutedEventArgs e)
         {
-            // TODO de rest nog aanvullen (laatste vereiste)
-            ShowMatches();
+
+            // @Wim: kan ik dit anders oplossen? 'Value' toegevoegd omdat ik anders foutmelding krijg met nullable en non-nullable value. 
+            DateTime selectedDate = matchDatePicker.SelectedDate.Value;
+            Team homeTeam = (Team)homeComboBox.SelectedItem;
+            Team visitorTeam = (Team)visitorComboBox.SelectedItem;
+            Stadium stadium = (Stadium)stadiumComboBox.SelectedItem;
+
+            Match newMatch = new Match(homeTeam, visitorTeam, stadium);
+ 
+            if (_matchCalendar[selectedDate].Contains(newMatch))
+            {
+                MessageBox.Show("Deze match bestaat al.");
+                return;
+            }
+            else
+            {
+                _matchCalendar[selectedDate].Add(newMatch);
+            }
+
+            if (selectedDate == dateselectorCalendar.SelectedDate)
+            {
+                ShowMatches();
+            }
+
+            matchDatePicker.SelectedDate = null;
+            homeComboBox.SelectedItem = null;
+            visitorComboBox.SelectedItem = null;
+            stadiumComboBox.SelectedItem = null;
         }
 
         private void OnMatchListBoxMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -267,6 +294,21 @@ namespace VoetbalManager
                 MessageBox.Show("Deze wedstrijd is nog niet gespeeld.");
             }
 
+        }
+
+        private void OnToggleButtonClicked(object sender, RoutedEventArgs e)
+        {
+            if (newMatchStackPanel.Visibility == Visibility.Collapsed)
+            {
+                newMatchStackPanel.Visibility = Visibility.Visible;
+                toggleButtonImage.Source = new BitmapImage(new Uri("Images/arrow-left.png", UriKind.Relative));
+                toggleButtonImage.Stretch = Stretch.Uniform;
+            }
+            else
+            {
+                newMatchStackPanel.Visibility = Visibility.Collapsed;
+                toggleButtonImage.Source = new BitmapImage(new Uri("Images/arrow-right.png", UriKind.Relative));
+            }
         }
     }
 }
