@@ -233,7 +233,7 @@ namespace VoetbalManager
             }
             else
             {
-                foreach (var kv in _matchCalendar[date])
+                foreach (Match kv in _matchCalendar[date])
                 {
                     matchListBox.Items.Add(kv);
                 }
@@ -249,6 +249,24 @@ namespace VoetbalManager
         {
             // TODO de rest nog aanvullen (laatste vereiste)
             ShowMatches();
+        }
+
+        private void OnMatchListBoxMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Match selectedItem = (Match)matchListBox.SelectedItem;
+            if (selectedItem == null)
+            {
+                return;
+            }
+            if (selectedItem.IsPlayed)
+            {
+                MessageBox.Show(selectedItem.ShowDetails());
+            }
+            else
+            {
+                MessageBox.Show("Deze wedstrijd is nog niet gespeeld.");
+            }
+
         }
     }
 }

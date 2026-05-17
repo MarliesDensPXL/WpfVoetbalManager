@@ -88,8 +88,8 @@
                     <Button x:Name="toggleButton" DockPanel.Dock="Left" Width="30" >
                         <Image Source="/Images/arrow-right.png"/>
                     </Button>
-                    <Calendar x:Name="dateselectorCalendar" DockPanel.Dock="Top" SelectedDatesChanged="OnDateSelectorDateChanged"/>
-                    <ListBox x:Name="matchListBox" DockPanel.Dock="Bottom" Margin="10"/>
+                    <Calendar x:Name="dateselectorCalendar" DockPanel.Dock="Top" SelectedDatesChanged="OnDateSelectorDateChanged" />
+                    <ListBox x:Name="matchListBox" DockPanel.Dock="Bottom" Margin="10" MouseDoubleClick="OnMatchListBoxMouseDoubleClick"/>
                 </DockPanel>
             </TabItem>
         </TabControl>
